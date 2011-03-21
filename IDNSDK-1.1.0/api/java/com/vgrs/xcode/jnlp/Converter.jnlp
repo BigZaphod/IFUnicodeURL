@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jnlp spec="1.0+"
+  codebase="http://10.131.29.44:8080"
+  href="Converter.jnlp"
+>
+
+<information>
+  <title>IDNA Client</title>
+  <vendor>VeriSign Inc.</vendor>
+  <homepage href="http://www.verisign.com" />
+  <description>International Character Conversion Client</description>
+  <icon href="images/VeriSign-Medium.gif"/>
+  <offline-allowed/>
+</information>
+
+<security>
+  <j2ee-application-client-permissions/>
+</security>
+
+<resources>
+  <j2se version="1.2+" />
+  <jar href="IDNSDK.jar"/>
+</resources>
+
+<application-desc main-class="com.vgrs.xcode.jnlp.Converter" />
+
+</jnlp>

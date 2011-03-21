@@ -1,0 +1,23 @@
+<html>
+<body>
+Classes implementing a Graphical User Interface for IDNA conversions.  The solution uses Java Web Start over the Java Network Launching Protocol to distribute the application to client machines.
+
+<br><br>Instructions for the distribution of this client.
+
+<br><br>1. The Converter.jnlp file contains the xml code which will launch the Converter application remotely.  This code must reference the webserver from which the Converter application will be remotely launched.  Replace any reference to "10.131.29.44" with a reference to the actual ip or domain name of the hosting webserver.
+
+<br><br>2. The index.html file contains html code which will first determine whether the end-user already has the Java Web Start software installed.  If not, then Java Web Start will be automatically downloaded before proceeding to download the Converter application.  This code must reference the webserver from which the Converter application will be remotely launched.  Replace any reference to "10.131.29.44" with a reference to the actual ip or domain name of the hosting webserver.
+
+<br><br>3. Copy the Converter.jnlp, index.html, and IDNSDK.jar files from their locations within the software, to a directory within the local webserver.  If using Tomcat for instance, copy all three files to the $CATALINA_HOME/webapps/ROOT directory.
+
+<br><br>4. Download the file "j2re-1_4_2_04-windows-i586-p-iftw.exe" from the Sun website.  Place this file in the same directory as the other conversion files on the webserver.
+
+<br><br>5. Sign the JAR file.  Java Web Start software will refuse to launch software which has not been signed.  Issue the following commands:
+<br>&nbsp&nbsp<b>keytool -genkey -keystore .keystore -alias MyCompany</b>
+<br>&nbsp&nbsp<b>jarsigner -keystore .keystore IDNSDK.jar MyCompany</b>
+
+<br><br>6. Start the webserver.
+
+<br><br>7. Surf to the index.html page for Java Web Start installation followed by Converter application launch.  Surf directly to Converter.jnlp for immediate application launch.
+</body>
+</html>

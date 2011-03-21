@@ -1,0 +1,226 @@
+<!--
+#############################################################################
+#
+#    The information in this document is proprietary
+#    to VeriSign and the VeriSign Registry Business.
+#    It may not be used, reproduced or disclosed without
+#    the written approval of the General Manager of
+#    VeriSign Global Registry Services.
+#
+#    PRIVILEDGED AND CONFIDENTIAL
+#    VERISIGN PROPRIETARY INFORMATION
+#    REGISTRY SENSITIVE INFORMATION
+#
+#    Copyright (c) 2001 VeriSign, Inc.  All rights reserved.
+#
+##############################################################################
+-->
+
+
+<project name="IDNSDK-1.0" default="all" basedir="..">
+
+
+ <!-- project definition properties -->
+  <property name="Title" value="IDNSDK"/>
+  <property name="Version" value="1.0.2"/>
+  <property name="Year" value="2003"/>
+  <property name="Publisher" value="VeriSign Inc."/>
+
+ <!-- compiler option properties -->
+  <property name="build.compiler" value="classic"/>
+  <property name="debug" value="on"/>
+  <property name="optimize" value="on"/>
+  <property name="deprecation" value="on"/>
+
+ <!-- project path properties -->
+  <property name="root.dir" value="${basedir}/../.." />
+  <property name="api.dir" value="${root.dir}/api" />
+  <property name="src.dir" value="${basedir}" />
+  <property name="class.dir" value="${basedir}/obj" />
+  <property name="lib.dir" value="${root.dir}/lib" />
+  <property name="tools.dir" value="${root.dir}/tools/java" />
+  <property name="data.dir" value="${api.dir}/data" />
+  <property name="logs.dir" value="${basedir}/build/logs" />
+  <property name="javadoc.dir" value="${root.dir}/doc/javadoc" />
+  <property name="xcode.dir" value="${src.dir}/com/vgrs/xcode" />
+  <property name="jnlp.dir" value="${xcode.dir}/jnlp" />
+  <property name="util.dir" value="${xcode.dir}/util" />
+  <property name="jar.file" value="IDNSDK.jar"/>
+  <property name="manifest.file" value="manifest.mf"/>
+
+
+
+<!-- ======================================================================= -->
+
+
+
+ <!-- =================================================================== -->
+ <!-- A L L                                                               -->
+ <!-- =================================================================== -->
+ <target name="all"
+  depends="doc,jar"
+  description="Creates all products">
+ </target>
+
+
+
+ <!-- =================================================================== -->
+ <!-- I N I T                                                             -->
+ <!-- =================================================================== -->
+ <target name="init"
+  description="Initializes the build">
+
+  <!-- set time stamp properties -->
+  <tstamp/>
+
+  <basename property="tmp.version" file="${root.dir}"/>
+  <property name="build.version" value="${tmp.version}"/>
+
+  <echo message="build version: ${build.version}"/>
+  <echo message="base directory: ${basedir}"/>
+
+  <filter token="year" value="${year}"/>
+  <filter token="version" value="${version}"/>
+  <filter token="date" value="${TODAY}"/>
+  <filter token="log" value="true"/>
+  <filter token="verbose" value="true"/>
+
+ </target>
+
+
+
+ <!-- =================================================================== -->
+ <!-- P R E P A R E                                                       -->
+ <!-- =================================================================== -->
+ <target name="prepare"
+  depends="init"
+  description="Prepares the build directory">
+
+  <mkdir dir="${class.dir}"/>
+
+ </target>
+
+
+
+ <!-- =================================================================== -->
+ <!-- P R E - C O M P I L E                                               -->
+ <!-- =================================================================== -->
+ <target name="pre-compile"
+  depends="prepare"
+  description="Compiles and runs logic required by the compilation step">
+
+  <javac destdir="${class.dir}"
+         classpath="${java.class.path}"
+         debug="${debug}"
+         optimize="${optimize}"
+         failonerror="true"
+         deprecation="true">
+   <src path="${src.dir}"/>
+   <include name="com/vgrs/xcode/util/XcodeErrorGenerator.java"/>
+  </javac>
+
+  <exec executable="${java.home}/bin/java" dir="${basedir}/build" failonerror="true">
+
+   <arg line="-classpath ${class.dir} com.vgrs.xcode.util.XcodeErrorGenerator ${data.dir}/util/ErrorCodes.txt ${util.dir}/XcodeError.java"/>
+  </exec>
+
+ </target>
+
+
+
+ <!-- =================================================================== -->
+ <!-- D O C                                                               -->
+ <!-- =================================================================== -->
+ <target name="doc"
+  depends="prepare"
+  description="Creates java documentation">
+  <mkdir dir="${javadoc.dir}"/>
+  <javadoc destdir="${javadoc.dir}"
+     windowtitle="Internationalized Domain Name Software Development Kit API Specification Version 1.0">
+  <doctitle><![CDATA[Internationalized Domain Name Software Development Kit API Specification Version 1.0]]></doctitle>
+    <bottom><![CDATA[<i>Copyright &#169; 2000-2003 VeriSign Inc. All Rights Reserved.</i>]]></bottom> 
+   <packageset dir="${src.dir}" defaultexcludes="yes">
+    <include name="com/vgrs/xcode/**"/>
+    <exclude name="com/vgrs/xcode/**/test"/>
+   </packageset>
+  </javadoc>
+ </target>
+
+
+
+ <!-- =================================================================== -->
+ <!-- C O M P I L E                                                       -->
+ <!-- =================================================================== -->
+ <target name="compile"
+  depends="pre-compile"
+  description="Compiles all source files">
+
+  <javac destdir="${class.dir}"
+         classpath="${java.class.path}"
+         debug="${debug}"
+         optimize="${optimize}"
+         failonerror="true"
+         deprecation="true">
+   <src path="${src.dir}"/>
+   <include name="com/vgrs/xcode/**"/>
+  </javac>
+ </target>
+
+
+
+
+ <!-- =================================================================== -->
+ <!-- J A R                                                               -->
+ <!-- =================================================================== -->
+ <target name="jar"
+  depends="compile"
+  description="Creates the jar file">
+
+  <delete file="${lib.dir}/${jar.file}" />
+  <echo file="${manifest.file}">ModuleTitle: ${Title}
+ModulePublisher: ${Publisher}
+ModuleVersion: ${build.version}
+  </echo>
+
+  <jar jarfile="${lib.dir}/${jar.file}" manifest="${manifest.file}" >
+   <fileset dir="${class.dir}" >
+    <include name="com/vgrs/xcode/**/*.class"/>
+   </fileset>
+   <fileset dir="${api.dir}" >
+    <include name="data/*.*"/>
+    <exclude name="data/BidiOther.txt.gz"/>
+    <exclude name="data/ErrorCodes.txt"/>
+    <exclude name="data/NormalizationTest.txt.gz"/>
+    <exclude name="data/Unassigned.txt.gz"/>
+   </fileset>
+   <fileset dir="${jnlp.dir}" >
+    <include name="images/**/*.gif"/>
+   </fileset>
+  </jar>
+  <delete file="${manifest.file}" />
+ </target>
+
+
+
+
+ <!-- =================================================================== -->
+ <!-- C L E A N                                                           -->
+ <!-- =================================================================== -->
+ <target name="clean"
+  depends="init"
+  description="Deletes files created during compilation">
+  <delete file="${lib.dir}/${jar.file}" />
+  <delete file="${util.dir}/XcodeError.java" />
+  <delete dir="${class.dir}"/>
+  <delete dir="${javadoc.dir}"/>
+ </target>
+
+
+
+<!-- ======================================================================= -->
+
+
+</project>
+
+
+<!-- End of file -->

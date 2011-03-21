@@ -1,0 +1,121 @@
+# Error code listing for the VerSign IDN SDK
+# Blank lines and lines beginning with '#' are ignored
+
+
+# 0: Success
+0	SUCCESS	Successful execution
+
+# 1 - 99: Common Errors
+1	INVALID_ARGUMENT	Invalid Argument
+2	EMPTY_ARGUMENT	Empty Argument
+3	NULL_ARGUMENT	Null Argument
+4	FILE_IO	File i/o failure
+5	INVALID_FILE_FORMAT	Invalid file format
+6	UNSUPPORTED_ENCODING	Unsupported encoding
+
+
+# 100 - 199: Hex Errors
+100	HEX_DECODE_INVALID_FORMAT	Found characters which do not represent a hex value
+101	HEX_DECODE_ONE_BYTE_EXCEEDED	Value of input characters exceeds 0xff
+102	HEX_DECODE_TWO_BYTES_EXCEEDED	Value of input characters exceeds 0xffff
+103	HEX_DECODE_FOUR_BYTES_EXCEEDED	Value of input characters exceeds 0xffffffff
+
+
+# 200 - 299: Ace Errors
+200	ACE_ENCODE_NOT_STD3ASCII	Input does not meet STD3 rules for domain name format.
+201	ACE_ENCODE_INVALID_OUTPUT_LENGTH	Resulting Ace sequence is too long or too short.
+202	ACE_ENCODE_VALID_PREFIX	The input sequence already has an ACE prefix.
+203	ACE_DECODE_NOT_STD3ASCII	Output does not meet STD3 rules for domain name format.
+204	ACE_ENCODE_PREFIX_FOUND	Input begins with a valid prefix.
+
+
+# 300 - 399: Race Errors
+300	RACE_ENCODE_BAD_SURROGATE_USE	Surrogates should be ordered pairs of high,low during race encoding.
+301	RACE_ENCODE_DOUBLE_ESCAPE_PRESENT	The codepoint 0x0099 is not allowed during race encoding.
+302	RACE_ENCODE_COMPRESSION_OVERFLOW	The compressed input length exceeds expected octets during race encode.
+303	RACE_ENCODE_INTERNAL_DELIMITER_PRESENT	Input contains a delimiter
+304	RACE_DECODE_ODD_OCTET_COUNT	Compression indicates an odd number of compressed octets.
+305	RACE_DECODE_BAD_SURROGATE_DECOMPRESS	Compression indicates a stream of identical surrogates.
+306	RACE_DECODE_IMPROPER_NULL_COMPRESSION	Sequence could have been compressed but was not.
+307	RACE_DECODE_INTERNAL_DELIMITER_FOUND	Found a delimiter while decoding a label
+308	RACE_DECODE_DOUBLE_ESCAPE_FOUND	The codepoint 0x0099 was found during race decoding.
+309	RACE_DECODE_UNNEEDED_ESCAPE_PRESENT	Found a double f escape character when u1 is zero.
+310	RACE_DECODE_TRAILING_ESCAPE_PRESENT	Found a double f escape character at the end of a sequence.
+311	RACE_DECODE_NO_UNESCAPED_OCTETS	The u1 character is non-zero, but all octets are escaped.
+312	RACE_DECODE_NO_INVALID_DNS_CHARACTERS	Sequence should not have been encoded.
+313	RACE_DECODE_DECOMPRESSION_OVERFLOW	Decompressed sequence exceeds size limitations.
+314	RACE_DECODE_5BIT_UNDERFLOW	Too few pentets to create a whole number of octets.
+315	RACE_DECODE_5BIT_OVERFLOW	Too many pentets to create a whole number of octets.
+
+
+# 400 - 499: Punycode Errors
+400	PUNYCODE_OVERFLOW	The code point exceeded maximum value allowed.
+401	PUNYCODE_BAD_OUTPUT	Bad output encountered while trying to decode the string.
+402	PUNYCODE_BIG_OUTPUT	The output length exceeds expected characters.
+403	PUNYCODE_DECODE_DNS_COMPATIBLE	Invalid encoding contains no international data.
+404	PUNYCODE_DECODE_INTERNAL_DELIMITER_FOUND	Found a delimiter while decoding a label
+
+
+# 500 - 599: Charmap Errors
+500	CHARMAP_OVERFLOW	The output length exceeds expected characters during character mapping.
+501	CHARMAP_LABEL_ELIMINATION	All input characters were mapped out during character mapping.
+
+
+# 600 - 699: Normalize Errors
+600	NORMALIZE_BAD_CANONICALCLASS_ERROR	Bad canonical class
+601	NORMALIZE_BAD_COMPATTAG_ERROR	Bad compatibility tag
+602	NORMALIZE_BAD_DECOMPSEQUENCE_ERROR	Bad decomposition sequence
+603	NORMALIZE_NULL_CHARACTER_PRESENT	Null character
+604	NORMALIZE_CANONICAL_LOOKUP_ERROR	Error looking up canonical class
+
+
+# 700 - 799: Prohibit Errors
+700	PROHIBIT_INVALID_CHARACTER	Prohibited
+
+
+# 800 - 899: Base32 Errors
+800	BASE32_ENCODE_BIT_OVERFLOW	The output length exceeds expected characters during encode.
+801	BASE32_DECODE_INVALID_SIZE	Invalid input size (1, 3, or 6) for base32 decode.
+802	BASE32_DECODE_INVALID_BIT_SEQUENCE	The base32 string ends with invalid bit sequence.
+803	BASE32_DECODE_BIT_OVERFLOW	The output length exceeds expected characters during decode
+804	BASE32_MAP_BIT_OVERFLOW	Mapping not found for input
+805	BASE32_DEMAP_INVALID_BASE32_CHAR	Base32 input is limited to the values [a-z,2-7].
+
+
+# 900 - 999: DNS Compatible Encoding Errors
+900	DCE_INVALID_DELIMITER	Invalid delimiter in dns string
+901	DCE_DECODE_BIT_OVERFLOW	The output length exceeds expected characters during decode.
+902	DCE_DECODE_INVALID_SIZE	Bad size of output dns bytes.
+
+
+# 1000 - 1099: TCSC Errors
+1000	TCSC_DOES_NOT_APPLY	The input sequence is not a candidate for TC/SC variation.
+1001	TCSC_CHARACTER_MAPPED_OUT	The input character has no TC/SC variant
+1002	INVALID_FILE_FORMAT_NOT_TCSC	Invalid TCSC codepoint found
+1003	NOT_CLASS_A_TCSC	The input domain name is not a Class A domain name
+
+
+# 1100 - 1199: Native Errors
+1100	NATIVE_UNSUPPORTED_ENCODING	Native encoding algorithm is not supported
+1101	NATIVE_INVALID_ENCODING	Encoding can not be applied to input
+
+
+# 1200 - 1299: Unicode Errors
+1200	UNICODE_SURROGATE_DECODE_ATTEMPTED	A valid surrogate pair is invalid input to Unicode decode
+1201	UNICODE_DECODE_INVALID_VALUE	Unicode can only decode values on the range [0x10000 - 0x10FFFF]
+1202	UNICODE_INVALID_VALUE	Unicode values must be on the range [0 - 0x10FFFF]
+
+
+# 1300 - 1399: UnicodeFilter Errors
+1300	UNICODEFILTER_DOES_NOT_PASS
+1301	UNICODEFILTER_INVALID_RANGE	Low value precedes high value in a Unicode range
+
+
+# 1400 - 1499: Bidi Errors
+1400	BIDI_RULE_2_VIOLATION	Intermixed R and RAL characters.
+1401	BIDI_RULE_3_VIOLATION	RAL characters without RAL characters in first and last positions.
+
+
+# 1500 - 1599: Idna Errors
+1500	IDNA_DECODE_MISMATCH	Result of toUnicode() and then toAscii() does not match input.
+1501	IDNA_LABEL_LENGTH_RESTRICTION	The length of the ASCII sequence exceeds the 63 octet limit imposed by RFC 1034.

@@ -1,0 +1,163 @@
+Verisign IDNSDK Release Notes                               -*-indented-text-*-
+  History of public changes
+  March 26th, 2004
+
+
+
+Version 1.1.0
+
+C API
+ * An overread issue has been addressed for some of the DomainTo routines.
+
+Java API
+ * A fully functional Java stand-alone application has been added to the
+   library.  This client application provides a graphical user interface for
+   running IDNA conversions.  Software and instructions are also provided for
+   distributing this client using the Java Network Launching Protocol.
+
+ * A minor issue was addressed within the Native class.  In one place, code
+   was changed to avoid using the String constructor which has some unwanted
+   decoding side effects.
+
+
+
+
+
+
+Version 1.0.3
+
+C API
+ * The C API has been modified to conform to some corner cases identified by
+   Paul Hoffman while developing the IDN Connect testbed.
+
+Java API
+ * The Java API now throws an Error if it finds a valid prefix during the
+   IDNA toAscii method.  This conforms to Step #5 of the IDNA toAscii
+   description in RFC 3490.
+
+
+
+
+
+
+Version 1.0.2
+
+C API
+ * Added "Xcode_" prefix to some routines for consistency.
+
+ * Bug fix in the IDNA toAscii() routine.  The previous release may
+   have yielded inaccurate results if the Nameprep routine rendered
+   the entire input sequence DNS-compatible.  This bug is fixed.
+
+Java API
+ * An object that generates encoding variants has been included.
+
+ * An object that applies the DCE encoding has been included.
+
+ * Version information has been moved into the META-INF/MANIFEST.MF
+   file and incorporated in the JAR file.  Now only a single JAR
+   file exists whose name is IDNSDK.jar.
+
+ * The Convert object now contains methods for converting to multiple output
+   types.
+
+ * When using JVM 1.4 the Native object can throw a
+   java.nio.BufferOverflowException.  This exception has been
+   properly covered with an XcodeException.
+
+ * Changed Datafile.java to better support Tomcat users.
+    [Contributed by Heiko Schaefer of Schlund + Partner]
+
+ * Updated the EncodingVariants object to allow both Race and Punycode input.
+
+ * Adjusted the way error codes are generated.  A set of new methods are
+   available which test an XcodeException to determine the error code.
+
+ * All source code has been reformatted in an effort to organize tab characters.
+
+ * Adjusted the way error codes are generated.  A string description
+   can optionally be added to any XcodeError() method.
+
+ * The UnicodeFilter object has been optimized to accommodate multiple matrices.
+
+ * Changed the API descriptions in Debug.java, which were incorrect.
+    [Contributed by Marcos Sanz of DENIC]
+
+ * Updated the Convert API descriptions with some notes.
+
+ * Updated some Javadoc items and one method name to avoid warnings during
+   compilation using JDK 1.4.
+
+ * Properly implemented the domain label length restriction of RFC 1034.
+    [Contributed by Marcos Sanz of DENIC]
+
+ * Changed the API description for Utf16.contract, which was incorrect.
+    [Contributed by Marcos Sanz of DENIC]
+
+ * Added a filterContext to the UnicodeFilter object.
+
+ * The java.lang.String.getBytes() method is locale dependant.  It uses the
+   default character encoding to encode the specified String object.  This
+   method is not a reliable way to retrieve a character encoding from the
+   String object.  A more reliable method has been written and used to
+   replace the getBytes() method.
+    [Contributed by Lee Yen Chew of web.cc]
+
+Documentation
+ * Updated the PDF guides to reference RFCs instead of drafts.
+    [Contributed by Marcos Sanz of DENIC]
+
+ * Updated these release notes (IDNSDK - Release Notes.txt)
+
+ * Updated the C specific readme file (C - Readme.txt)
+
+
+
+
+
+
+Version 1.0.1
+
+* C API - Support has been added to build properly on FreeBSD systems.
+  The make files have been modified to work on FreeBSD systems.
+
+* C API - Now supports Utf8.
+
+* Java API - The class Convert now makes better use of Idna class
+
+* Java API - api/java/build/build.xml changes
+
+  build.xml now makes a copy of the IDNSDK.{VERSION}.jar as IDNSDK.jar during
+  the compile process. This is needed as all the shell and batch scripts
+  refer to this jar file instead of the jar file with the version number.
+
+  build.xml now deletes IDNSDK.jar when the clean option is invoked.
+
+* Java API - The method Idna.toUnciode() now optionally throws an exception
+  on error.
+
+* JAVA API - api/java/build/Makefile has been modifed to call ./build.sh
+  instead of build.sh
+
+* Java Tools - Now support windows systems.
+
+  Batch (.bat) files have been added to run on windows in the directory
+  tools/java/win32/
+
+  The shell scripts have been moved from the directory
+  tools/java/ to tools/java/unix/
+
+* docs - Documentation updates
+
+  "IDNSDK - Release Notes.txt" has been added.
+  "IDNSDK - Programmer's Guide.pdf" has been updated.
+  "IDNSDK - User's Guide.pdf" has been updated.
+
+
+
+
+
+
+Version 1.0.0
+
+(First release of the software.)

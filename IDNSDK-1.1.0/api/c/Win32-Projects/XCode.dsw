@@ -1,0 +1,215 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "charmap"=".\TEST\charmap\charmap.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "domains"=".\test\domains\domains.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "fullcircle"=".\test\fullcircle\fullcircle.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "headerexport"=".\headerexport\headerexport.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "idna"=".\test\idna\idna.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "nameprep"=".\test\nameprep\nameprep.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "prohibit"=".\test\prohibit\prohibit.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "punycode"=".\test\punycode\punycode.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "race"=".\test\race\race.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sampleuse"=".\TEST\sampleuse\sampleuse.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "unicode"=".\test\unicode\unicode.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "utf8"=".\test\utf8\utf8.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name xcodelib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "xcodedll"=".\xcodedll\xcodedll.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "xcodelib"=".\xcodelib\xcodelib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

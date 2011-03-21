@@ -1,0 +1,4 @@
+#!/bin/csh -f
+
+setenv CLASSPATH `dirname $0`/../../../lib/IDNSDK.jar
+java com.vgrs.xcode.idna.test.RaceTest $*
