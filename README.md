@@ -12,7 +12,7 @@ Usage is quite simple. Where you'd have normally used NSURL's `URLWithString:` (
 
 # Notes
 
-This uses code from IDN SDK from Verisign, Inc. The entire IDN SDK source package is included in IDNSDK-1.1.0.zip. I have pulled out and slightly modified (to avoid compiler and analyzer warnings) the files and headers needed so that building this in XCode is as easy as adding the IFUnicodeURL folder to your project.
+This uses code from IDN SDK from Verisign, Inc. The entire IDN SDK source package is included in IDNSDK-1.1.0.zip. I have pulled out and slightly modified (to avoid compiler and analyzer warnings) the files and headers needed so that building this in Xcode is as easy as adding the IFUnicodeURL folder to your project.
 
 Take note of the IDNSDK license which can be found in the IDNSDK-1.1.0.zip file. (The license is basically a BSD-like license.) The IFUnicodeURL category is licensed under the Simplified BSD License (see IFUnicodeURL-LICENSE.txt)
 
