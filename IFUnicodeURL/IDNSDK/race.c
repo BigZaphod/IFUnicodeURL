@@ -30,6 +30,27 @@
 #define NO_COMPRESSION_FLAG     0xD8
 #define HYPHEN                  0x002D
 
+/* Make the compiler happy */
+
+int Xcode_race_RaceCompress( const UTF16CHAR *  uncompressed,
+                            const size_t       uncompressed_size,
+                            UCHAR8 *           compressed,
+                            size_t *           compressed_size );
+int Xcode_race_RaceDecompress( const UCHAR8* compressed,
+                              const size_t compressed_size,
+                              UTF16CHAR* decompressed,
+                              size_t* decompressed_size );
+UCHAR8 Xcode_enmap32_race(const UCHAR8 input);
+UCHAR8 Xcode_demap32_race(const UCHAR8 input);
+int Xcode_enbase32_race( const UCHAR8* input,
+                        const size_t input_size,
+                        UCHAR8* output,
+                        size_t* output_size );
+int Xcode_debase32_race( const UCHAR8* input,
+                        const size_t input_size,
+                        UCHAR8* output,
+                        size_t* output_size );
+
 
 /********************************************************************************
  *                              Race                                            *
