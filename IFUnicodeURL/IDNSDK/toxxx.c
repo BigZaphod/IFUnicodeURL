@@ -189,7 +189,7 @@ int Xcode_ToASCII( const UTF16CHAR *  puzInputString,
   en = 0;
   for ( i = 0; i < iOutputSize; i++ ) 
   {
-    if ( *(dwzOutputString+i) < 0 || *(dwzOutputString+i) > 0x7F ) 
+    if ( *(dwzOutputString+i) > 0x7F ) 
     {
       int res;
       /* 5. Verify that the sequence does NOT begin with the ACE prefix. */

@@ -13,6 +13,17 @@
 #include "xcode.h"
 #include "util.h"
 
+// Make the compiler happy
+int is_all_basic(DWORD input_length, const DWORD input[]);
+int punycode_encode( unsigned int input_length,
+                    const DWORD input[],
+                    unsigned int *output_length,
+                    char output[] );
+int punycode_decode( unsigned int input_length,
+                    const char input[],
+                    unsigned int *output_length,
+                    DWORD output[] );
+
 /*** Bootstring parameters for AMC-ACE-Z ***/
 
 enum { base = 36, tmin = 1, tmax = 26, skew = 38, damp = 700,
@@ -187,7 +198,7 @@ int punycode_encode( unsigned int input_length,
     ++delta, ++n;
   }
 
-  *output_length = out;
+  *output_length = (int)out;
   return XCODE_SUCCESS;
 }
 
@@ -270,7 +281,7 @@ int punycode_decode( unsigned int input_length,
     output[i++] = n;
   }
 
-  *output_length = out;
+  *output_length = (int)out;
   return XCODE_SUCCESS;
 }
 
